@@ -81,4 +81,4 @@ class Reaccion
 ## Avances
 - Creamos una un archivo configuracion y aqui pusimos el conector a la base de datos que es cadena_base_datos = 'sqlite:///futRedX.db' 
 - Creamos otro archivo llamado genera tablas el cual aqui creamos 3 tablas para crearla en la base de datos que es DB Browser
-- Creamos 
+- Creamos un archivo llamado ingresa datos usamos la librería de pandas para poder subir los datos de los Csv a la base de datos
