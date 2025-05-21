@@ -76,3 +76,9 @@ class Reaccion
 ## En caso de usar IA-Generativa para consulta de información
 
 - En un archivo llamado informacion.md; explicando a detalle el uso de cada prompt
+
+
+## Avances
+- Creamos una un archivo configuracion y aqui pusimos el conector a la base de datos que es cadena_base_datos = 'sqlite:///futRedX.db' 
+- Creamos otro archivo llamado genera tablas el cual aqui creamos 3 tablas para crearla en la base de datos que es DB Browser
+- Creamos 
