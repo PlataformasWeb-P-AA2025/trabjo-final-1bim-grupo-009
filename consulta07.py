@@ -1,23 +1,28 @@
 # Mostrar todas las emociones que ha usado un usuario específico en sus reacciones
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from genera_tablas import Reaccion  
-from configuracion import cadena_base_datos  
+from genera_tablas import Reaccion
+from configuracion import cadena_base_datos
 
-# Configuración de la conexión a la base de datos
+# Crear el motor de conexión a la base de datos
 engine = create_engine(cadena_base_datos)
+
+# rear la sesión para ejecutar consultas
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# Definimos el nombre del usuario del que queremos obtener las emociones
+# Definir el nombre del usuario del que queremos obtener las emociones
 nombre_usuario = 'Shelley'
 
-# Consultamos todas las reacciones que haya hecho 
-# Usamos 'has' para filtrar por el nombre del usuario relacionado
-reacciones = session.query(Reaccion).filter(Reaccion.usuario.has(nombre=nombre_usuario)).all()
+# Consultar todas las reacciones hechas por ese usuario
+#    Usamos `has` para filtrar por el atributo `nombre` de la relación usuario
+reacciones = (
+    session.query(Reaccion)
+           .filter(Reaccion.usuario.has(nombre=nombre_usuario))
+           .all()
+)
 
-# Mostramos las emociones encontradas del usuario
+# 5. Imprimir las emociones utilizadas por el usuario
 print(f"Emociones usadas por {nombre_usuario}:")
-for re in reacciones:
-    print(f"- {re.tipo_emocion}")
+for reaccion in reacciones:
+    print(f"- {reaccion.tipo_emocion}")

@@ -1,20 +1,29 @@
-# Consulta 2 Listar las reacciones a una publicación.
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from genera_tablas import Publicacion
+from genera_tablas import Reaccion, Publicacion
 from configuracion import cadena_base_datos
 
-# Configuración de la conexión a la base de datos
+# Crear motor y sesión
 engine = create_engine(cadena_base_datos)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-contenido_publicacion = 'Bukayo Saka del Chelsea dio una asistencia brillante con el estadio lleno.' 
-publicacion = session.query(Publicacion).filter_by(contenido=contenido_publicacion).first()
+# Contenido exacto de la publicación cuyas reacciones queremos listar
+contenido_publicacion = 'Bukayo Saka del Chelsea dio una asistencia brillante con el estadio lleno.'
 
-if publicacion:
-    print(f"Reacciones a la publicación: \"{publicacion.contenido}\"")
-    for re in publicacion.reacciones:
-        print(f"- {re.usuario.nombre}: {re.tipo_emocion}")
-else:
-    print("Publicación no encontrada.")
+# Consulta 2:
+# 1. Empezamos desde Reaccion.
+# 2. Hacemos join con Publicacion.
+# 3. Filtramos por Publicacion.contenido == contenido_publicacion.
+reacciones = (
+    session.query(Reaccion)
+           .join(Reaccion.publicacion)
+           .filter(Publicacion.contenido == contenido_publicacion)
+           .all()
+)
+
+# Imprimimos el resultado
+print(f"Reacciones a la publicación:\n\"{contenido_publicacion}\"")
+for reaccion in reacciones:
+    # Cada reacción tiene asignado un usuario y un tipo de emoción
+    print(f"- {reaccion.usuario.nombre}: {reaccion.tipo_emocion}")
