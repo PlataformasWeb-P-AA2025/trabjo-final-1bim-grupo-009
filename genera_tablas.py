@@ -23,10 +23,6 @@ class Usuario(Base):
     publicaciones = relationship("Publicacion", back_populates="usuario")
     reacciones = relationship("Reaccion", back_populates="usuario")
 
-    # Representación de la clase como cadena
-    def _repr_(self):
-        return "Usuario: nombre=%s" % self.nombre
-
 # Definición de la clase Publicacion que representa la tabla 'publicacion'
 class Publicacion(Base):
     __tablename__ = 'publicacion'  
@@ -38,13 +34,6 @@ class Publicacion(Base):
     # Relación con el usuario autor y con las reacciones recibidas
     usuario = relationship("Usuario", back_populates="publicaciones")
     reacciones = relationship("Reaccion", back_populates="publicacion")
-
-    # Representación de la clase como cadena
-    def _repr_(self):
-        return "Publicacion: contenido=%s - autor=%s" % (
-            self.contenido,
-            self.usuario.nombre if self.usuario else "Desconocido"
-        )
 
 # Definición de la clase Reaccion que representa la tabla 'reaccion'
 class Reaccion(Base):
@@ -58,14 +47,6 @@ class Reaccion(Base):
     # Relación con el usuario que reacciona y la publicación reaccionada
     usuario = relationship("Usuario", back_populates="reacciones")
     publicacion = relationship("Publicacion", back_populates="reacciones")
-
-    # Representación de la clase como cadena
-    def _repr_(self):
-        return "Reaccion: usuario=%s - publicacion=%s - emocion=%s" % (
-            self.usuario.nombre,
-            self.publicacion.contenido,
-            self.tipo_emocion
-        )
 
 # Crea todas las tablas en la base de datos a partir de las clases definidas
 Base.metadata.create_all(engine)
