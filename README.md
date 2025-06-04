@@ -82,3 +82,10 @@ class Reaccion
 - Creamos una un archivo configuracion y aqui pusimos el conector a la base de datos que es cadena_base_datos = 'sqlite:///futRedX.db' 
 - Creamos otro archivo llamado genera tablas el cual aqui creamos 3 tablas para crearla en la base de datos que es DB Browser
 - Creamos un archivo llamado ingresa datos usamos la librería de pandas para poder subir los datos de los Csv a la base de datos
+
+sudo docker-compose up -d
+psql -U postgres -h localhost -p 5433 -d postgres -c "CREATE DATABASE futredx;"
+sudo docker-compose up -d
+sudo docker ps
+sudo docker exec -it pg-postgres-1  bash
+psql -U postgres -h localhost -p 5432 -d postgres -c "CREATE DATABASE futredx;"
