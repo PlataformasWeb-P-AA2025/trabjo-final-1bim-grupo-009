@@ -119,5 +119,3 @@ fg
 
 - 11) Salir del contenedor
 exit
-
-correr codigo de python con entorno: source ~/entornos-clase/entorno03/bin/activate 
