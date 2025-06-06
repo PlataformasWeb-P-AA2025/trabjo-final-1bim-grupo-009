@@ -83,6 +83,7 @@ class Reaccion
 - Creamos otro archivo llamado genera tablas el cual aqui creamos 3 tablas para crearla en la base de datos que es DB Browser
 - Creamos un archivo llamado ingresa datos usamos la librería de pandas para poder subir los datos de los Csv a la base de datos
 
+<<<<<<< HEAD
 ## Comandos
 - 1) Crear contenedor con usuario admin y contraseña 1234
 docker run --name postgres-futbol -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -e POSTGRES_DB=futbol -p 5432:5432 -d postgres
