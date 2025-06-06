@@ -82,3 +82,42 @@ class Reaccion
 - Creamos una un archivo configuracion y aqui pusimos el conector a la base de datos que es cadena_base_datos = 'sqlite:///futRedX.db' 
 - Creamos otro archivo llamado genera tablas el cual aqui creamos 3 tablas para crearla en la base de datos que es DB Browser
 - Creamos un archivo llamado ingresa datos usamos la librería de pandas para poder subir los datos de los Csv a la base de datos
+
+## Comandos
+- 1) Crear contenedor con usuario admin y contraseña 1234
+docker run --name postgres-futbol -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -e POSTGRES_DB=futbol -p 5432:5432 -d postgres
+
+- 2) Ver lista de contenedores activos
+docker ps
+
+- 3) Ver lista de todos los contenedores (activos e inactivos)
+docker ps -a
+
+- 4) Acceder al contenedor
+docker exec -it postgres-futbol bash
+
+- 5) Acceder a PostgreSQL dentro del contenedor con usuario admin
+psql -U admin
+
+- 6) Acceder a la base de datos futbol
+\c futbol
+
+- 7) Listar las tablas de la base futbol
+\dt
+
+- 8) Realizar un SELECT a la tabla publicaciones
+SELECT * FROM publicaciones;
+
+- 9) Salir temporalmente con Ctrl + Z (suspender proceso)
+Presiona Ctrl + Z
+
+- Para volver a psql desde suspensión:
+fg
+
+- 10) Salir del cliente psql
+\q
+
+- 11) Salir del contenedor
+exit
+
+correr codigo de python con entorno: source ~/entornos-clase/entorno03/bin/activate 
