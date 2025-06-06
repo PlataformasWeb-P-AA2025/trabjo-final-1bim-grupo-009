@@ -86,37 +86,37 @@ class Reaccion
 <<<<<<< HEAD
 ## Comandos
 - 1) Crear contenedor con usuario admin y contraseña 1234
-docker run --name postgres-futbol -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -e POSTGRES_DB=futbol -p 5432:5432 -d postgres
+- docker run --name postgres-futbol -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -e POSTGRES_DB=futbol -p 5432:5432 -d postgres
 
 - 2) Ver lista de contenedores activos
-docker ps
+- docker ps
 
 - 3) Ver lista de todos los contenedores (activos e inactivos)
-docker ps -a
+- docker ps -a
 
 - 4) Acceder al contenedor
-docker exec -it postgres-futbol bash
+- docker exec -it postgres-futbol bash
 
 - 5) Acceder a PostgreSQL dentro del contenedor con usuario admin
-psql -U admin
+- psql -U admin
 
 - 6) Acceder a la base de datos futbol
-\c futbol
+- \c futbol
 
 - 7) Listar las tablas de la base futbol
-\dt
+- \dt
 
 - 8) Realizar un SELECT a la tabla publicaciones
-SELECT * FROM publicaciones;
+- SELECT * FROM publicaciones;
 
 - 9) Salir temporalmente con Ctrl + Z (suspender proceso)
-Presiona Ctrl + Z
+- Presiona Ctrl + Z
 
 - Para volver a psql desde suspensión:
-fg
+- fg
 
 - 10) Salir del cliente psql
-\q
+- \q
 
 - 11) Salir del contenedor
-exit
+- exit
